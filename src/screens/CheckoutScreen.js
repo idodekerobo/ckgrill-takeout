@@ -7,12 +7,13 @@ import { Container, Row, Col, ListGroup, ListGroupItem } from 'shards-react';
 import "shards-ui/dist/css/shards.min.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import TAX_RATE from '../api/constants';
-import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
+// import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
 
 // Stripe
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe(STRIPE_TEST_PUBLISHABLE_KEY, {stripeAccount: STRIPE_CONNECT_ACCT_ID});
+// const stripePromise = loadStripe(STRIPE_TEST_PUBLISHABLE_KEY, {stripeAccount: STRIPE_CONNECT_ACCT_ID});
+const stripePromise = loadStripe(process.env.STRIPE_TEST_PUBLISHABLE_KEY, {stripeAccount: process.env.STRIPE_CONNECT_ACCT_ID});
 
 const CheckoutScreen = (props) => {
    const { state } = useContext(GlobalContext);
