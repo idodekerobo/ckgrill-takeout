@@ -15,6 +15,9 @@
     "react-scripts": "3.4.1",
     "shards-react": "^1.0.3"
   },
+  "engines": {
+     "node": "14.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
