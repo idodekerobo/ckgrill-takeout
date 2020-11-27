@@ -16,7 +16,7 @@
     "shards-react": "^1.0.3"
   },
   "engines": {
-     "node": "14.x"
+     "node": "14.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
