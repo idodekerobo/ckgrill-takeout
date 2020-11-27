@@ -8,6 +8,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "browserslist": "^4.14.7",
+    "caniuse-lite": "^1.0.30001161",
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -16,7 +18,7 @@
     "shards-react": "^1.0.3"
   },
   "engines": {
-     "node": "14.4.0"
+    "node": "14.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
