@@ -1,8 +1,0 @@
-{
-   "short_name": "Order from CK's",
-   "name": "Order Online from CK's Tavern and Grill",
-   "start_url": ".",
-   "display": "standalone",
-   "theme_color": "#000000",
-   "background_color": "#ffffff"
- }
