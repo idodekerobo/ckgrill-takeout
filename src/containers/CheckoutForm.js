@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/CheckoutForm.css';
 // Stripe
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import API_URL from '../api/api';
 
 const CheckoutForm = (props) => {
    const stripe = useStripe();
@@ -111,7 +112,7 @@ const CheckoutForm = (props) => {
 
       if (paymentMethod === 'pickup') {
          // TODO - put the production api url here when it pushes to production
-         await fetch('http://localhost:5000/api/order', {
+         await fetch(API_URL + 'order', {
             method: 'POST',
             headers: {
                'Content-type': 'application/json'
