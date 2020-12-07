@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { GlobalContext } from '../context/GlobalState';
 
 // import Button from '../components/Button';
-import burritoImg from '../assets/burrito.jpg'
 
 const Menu = ({onCategoryClick, handleAddToOrderClick}) => {
    const { state } = useContext(GlobalContext);
@@ -18,8 +17,6 @@ const Menu = ({onCategoryClick, handleAddToOrderClick}) => {
 
    const visibleItems = state.visibleItemCards.slice().map( (item) => {
       return   <Card key={item._id} className="category-card">
-                  {/* <CardImg src='/assets/burrito.png'/> */}
-                  <CardImg className="card-img" src={burritoImg}/>
                   <CardBody className="card-body-div">
                      <div className="card-text">
                         <CardTitle className="card-title-div">{item.name}</CardTitle>
