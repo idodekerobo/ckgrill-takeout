@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/CheckoutForm.css';
 // Stripe
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import API_URL from '../api/api';
+import { API_URL } from '../api/api';
 
 const CheckoutForm = (props) => {
    const stripe = useStripe();
