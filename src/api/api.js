@@ -6,8 +6,7 @@ T0-DO:
 
 
 // can make this an .env variable
-// const API_URL = 'https://www.rhemi.co/api/';
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://www.rhemi.co/api/';
 
 // The fetch API calls will be built using async functions, instead of promises
 
