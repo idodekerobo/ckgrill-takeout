@@ -130,7 +130,7 @@ const CheckoutForm = (props) => {
       } else if (paymentMethod === 'online') {
          if (!stripe || !elements) return;
          // TODO - put the production api url here when it pushes to production
-         const response = await fetch('http://localhost:5000/api/checkout', {
+         const response = await fetch(API_URL + 'checkout', {
             method: 'POST',
             headers: {
                'Content-type': 'application/json'
@@ -162,7 +162,7 @@ const CheckoutForm = (props) => {
          } else {
             if (result.paymentIntent.status === 'succeeded') {
                // TODO - put the production api url here when it pushes to production
-               await fetch('http://localhost:5000/api/order', {
+               await fetch(API_URL + 'order', {
                   method: 'POST', 
                   headers: {
                      'Content-type': 'application/json'
