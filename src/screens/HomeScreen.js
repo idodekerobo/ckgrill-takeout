@@ -77,7 +77,6 @@ class HomeScreen extends Component {
 
    componentDidMount() {
       this.loadMenu();
-      console.log(`This is the test env variable: ${process.env.REACT_APP_TEST_CONFIG_VAR}`);
    }
 
    render() {
