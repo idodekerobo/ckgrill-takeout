@@ -141,7 +141,10 @@ const CheckoutForm = (props) => {
             })
          });
          const paymentIntentResponse = await response.json();
-
+         
+         // TODO - name on card not working
+         console.log(nameOnCard);
+         
          const result = await stripe.confirmCardPayment(paymentIntentResponse.clientSecret, {
             payment_method: {
                card: elements.getElement(CardElement),
