@@ -142,9 +142,10 @@ const CheckoutForm = (props) => {
          });
          const paymentIntentResponse = await response.json();
          
-         // TODO - name on card not working
-         console.log(nameOnCard);
+         // TODO - name on card not working when the button is pushed
+         // console.log(nameOnCard);
          
+
          const result = await stripe.confirmCardPayment(paymentIntentResponse.clientSecret, {
             payment_method: {
                card: elements.getElement(CardElement),
@@ -164,7 +165,6 @@ const CheckoutForm = (props) => {
             redirectAfterTimeout();
          } else {
             if (result.paymentIntent.status === 'succeeded') {
-               // TODO - put the production api url here when it pushes to production
                await fetch(API_URL + 'order', {
                   method: 'POST', 
                   headers: {
@@ -212,10 +212,10 @@ const CheckoutForm = (props) => {
                <input type="text" name="zip" value={zip} onChange={handleInputChange} placeholder="Zip" required />
                <button type="submit" action="payAtPickUp" onClick={onPayAtPickupClick}>Pay at Pick Up</button>
                <div className="card-element-wrapper" >
-                  <label className="labelWrapper">
-                     <input id="matchingNamesCheckbox" type="checkbox" name="matchingNames" value="matchingNames" checked={matchingNames} onChange={handleInputChange}/>
-                     <p id="checkboxLabel">Name on card matches name on order</p>
-                  </label>
+                  {/* <label className="labelWrapper"> */}
+                     {/* <input id="matchingNamesCheckbox" type="checkbox" name="matchingNames" value="matchingNames" checked={matchingNames} onChange={handleInputChange}/> */}
+                     {/* <p id="checkboxLabel">Name on card matches name on order</p> */}
+                  {/* </label> */}
                   <input style={(matchingNames) ? nameOnCardInputStyle : null} id="nameOnCard" type="text" name="nameOnCard" value={nameOnCard} onChange={handleNameOnCardInput} placeholder="Name on Card" required={(matchingNames) ? false : true}/>
                   <CardElement className="card-element" options={{ style: styleObject }} />
                </div>
