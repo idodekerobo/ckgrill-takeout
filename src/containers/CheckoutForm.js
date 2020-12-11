@@ -216,7 +216,8 @@ const CheckoutForm = (props) => {
                      {/* <input id="matchingNamesCheckbox" type="checkbox" name="matchingNames" value="matchingNames" checked={matchingNames} onChange={handleInputChange}/> */}
                      {/* <p id="checkboxLabel">Name on card matches name on order</p> */}
                   {/* </label> */}
-                  <input style={(matchingNames) ? nameOnCardInputStyle : null} id="nameOnCard" type="text" name="nameOnCard" value={nameOnCard} onChange={handleNameOnCardInput} placeholder="Name on Card" required={(matchingNames) ? false : true}/>
+                  {/* <input style={(matchingNames) ? nameOnCardInputStyle : null} id="nameOnCard" type="text" name="nameOnCard" value={nameOnCard} onChange={handleNameOnCardInput} placeholder="Name on Card" required={(matchingNames) ? false : true}/> */}
+                  <input id="nameOnCard" type="text" name="nameOnCard" value={nameOnCard} onChange={handleNameOnCardInput} placeholder="Name on Card" required={(matchingNames) ? false : true}/>
                   <CardElement className="card-element" options={{ style: styleObject }} />
                </div>
                <button type="submit" action="payOnline" onClick={onPayOnlineClick} disabled={!stripe}>Pay Online</button>
