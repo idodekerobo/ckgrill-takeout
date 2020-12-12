@@ -6,7 +6,7 @@ T0-DO:
 
 
 // can make this an .env variable
-export const API_URL = 'https://www.rhemi.co/api/';
+export const API_URL = process.env.REACT_APP_API_URL;
 
 // The fetch API calls will be built using async functions, instead of promises
 
