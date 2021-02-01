@@ -9,7 +9,7 @@ import ListItem from '../components/ListItem';
 import * as Actions from '../context/Actions';
 import TAX_RATE from '../api/constants';
 import { calcPrice } from '../api/functions';
-import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
+// import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
 
 // Stripe
 import { Elements } from '@stripe/react-stripe-js';
