@@ -84,9 +84,9 @@ const CheckoutForm = (props) => {
       }
    }
 
-   const nameOnCardInputStyle = {
-      display: 'none',
-   }
+   // const nameOnCardInputStyle = {
+   //    display: 'none',
+   // }
 
    // TODO - figure out a better way to redirect after order
    const redirectAfterTimeout = () => {
@@ -210,7 +210,7 @@ const CheckoutForm = (props) => {
                <input type="text" name="city" value={city} onChange={handleInputChange} placeholder="City" required />
                <input type="text" name="customerState" value={customerState} onChange={handleInputChange} placeholder="State" required />
                <input type="text" name="zip" value={zip} onChange={handleInputChange} placeholder="Zip" required />
-               <button type="submit" action="payAtPickUp" onClick={onPayAtPickupClick}>Pay at Pick Up</button>
+               <button type="submit" id="checkout-button" action="payAtPickUp" onClick={onPayAtPickupClick}>Pay at Pick Up</button>
                <div className="card-element-wrapper" >
                   {/* <label className="labelWrapper"> */}
                      {/* <input id="matchingNamesCheckbox" type="checkbox" name="matchingNames" value="matchingNames" checked={matchingNames} onChange={handleInputChange}/> */}
@@ -220,7 +220,7 @@ const CheckoutForm = (props) => {
                   <input id="nameOnCard" type="text" name="nameOnCard" value={nameOnCard} onChange={handleNameOnCardInput} placeholder="Name on Card" required={(matchingNames) ? false : true}/>
                   <CardElement className="card-element" options={{ style: styleObject }} />
                </div>
-               <button type="submit" action="payOnline" onClick={onPayOnlineClick} disabled={!stripe}>Pay Online</button>
+               <button type="submit" id="checkout-button" action="payOnline" onClick={onPayOnlineClick} disabled={!stripe}>Pay Online</button>
             </fieldset>
          </form>
       </div>

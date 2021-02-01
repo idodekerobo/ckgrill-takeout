@@ -1,0 +1,31 @@
+.item-opt-container {
+   margin: 20px;
+   padding: 10px;
+   border-radius: 7px;
+   background-color: #efeff2;
+}
+.item-name {
+   font-weight: 500;
+   margin: 0;
+}
+.item-opt-choices-container {
+   padding: 5px;
+   /* width: 100%; */
+   display: flex;
+   flex-flow: row wrap;
+   align-content: space-between;
+   justify-content: space-between;
+}
+.inner-item-opt-choices-container {
+   margin: 0;
+}
+.input-container {
+   margin: 10px;
+   font-weight: 300;
+}
+.input-label {
+   margin: 0;
+}
+.input {
+   margin-right: 10px;
+}

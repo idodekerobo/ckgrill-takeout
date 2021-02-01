@@ -31,6 +31,11 @@ export const Reducer = (state, action) => {
             ...state, 
             cart: action.payload
          }
+      case Actions.SELECT_ITEM: 
+         return {
+            ...state,
+            selectedItem: action.payload
+         }
       case Actions.CLEAR_CART:
          return {
             cart: []

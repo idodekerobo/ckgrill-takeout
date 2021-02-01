@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../styles/Menu.css';
 import { Button, ButtonGroup } from 'shards-react';
-import { Container, Row, Col, Card, CardImg, CardTitle, CardBody } from 'shards-react';
+import { Container, Row, Col, Card, CardTitle, CardBody } from 'shards-react';
 import "shards-ui/dist/css/shards.min.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GlobalContext } from '../context/GlobalState';
@@ -28,7 +28,7 @@ const Menu = ({onCategoryClick, handleAddToOrderClick}) => {
                   </CardBody>
                </Card>
    });
-   
+
    return (
       <Container>
          <Row className="category">
@@ -43,8 +43,6 @@ const Menu = ({onCategoryClick, handleAddToOrderClick}) => {
                {visibleItems}
             </Col>
             {/* end of category-content div */}
-         {/* </div>  */}
-         {/* end of category div */}
          </Row>
       </Container>
    );

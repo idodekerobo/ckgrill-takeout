@@ -1,0 +1,23 @@
+.cart-list-group {
+   text-transform: capitalize;
+}
+.cart-item-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.cart-item-name {
+   position: relative;
+   top: 5px;
+}
+.cart-item-details {
+   margin: 0;
+   font-size: 1em;
+}
+.cart-item-spec-instructions {
+   text-transform: none;
+   font-style: italic;
+}
+.cart-item-price {
+   font-size: 1.1em;
+}

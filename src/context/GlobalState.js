@@ -7,6 +7,7 @@ const initialState = {
    menuCategories: [],
    activeCategory: {},
    visibleItemCards: [],
+   selectedItem: {},
 };
 
 // creating context

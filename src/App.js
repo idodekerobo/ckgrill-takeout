@@ -7,9 +7,6 @@ import HomeScreen from './screens/HomeScreen'
 import CheckoutScreen from './screens/CheckoutScreen';
 
 class App extends Component {
-   constructor(props) {
-      super(props);
-   }
    componentDidMount() {
 
    }

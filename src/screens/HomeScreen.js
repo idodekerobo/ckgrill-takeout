@@ -4,6 +4,7 @@ import * as api from '../api/api';
 import NavComponent from '../components/NavComponent';
 import Menu from '../containers/Menu';
 import Cart from '../containers/Cart';
+import ItemModal from '../components/ItemModal';
 
 import { Container, Row, Col } from 'shards-react';
 import "shards-ui/dist/css/shards.min.css"
@@ -26,12 +27,13 @@ class HomeScreen extends Component {
       super(props);
       this.state = {
          isLoading: true,
+         modalVisible: false,
       }
       this.updateVisibleItemCards = this.updateVisibleItemCards.bind(this);
       this.loadMenu = this.loadMenu.bind(this);
       this.onCategoryButtonClick = this.onCategoryButtonClick.bind(this);
       this.handleAddToOrderClick = this.handleAddToOrderClick.bind(this);
-      this.handleRemovefromCart = this.handleRemovefromCart.bind(this);
+      this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
    }
    static contextType = GlobalContext;
 
@@ -54,23 +56,27 @@ class HomeScreen extends Component {
    }
 
    onCategoryButtonClick(id) {
-      console.log(id);
       const { state, dispatch } = this.context;
       const clickedCategory = state.menuCategories.slice().find( (category) => category._id === id);
       dispatch({type: Actions.GET_ACTIVE_CATEGORY, payload: clickedCategory});
       this.updateVisibleItemCards(clickedCategory);
    }
 
-   handleAddToOrderClick(id) {
-      const { state, dispatch } = this.context
-      const clickedItem = state.visibleItemCards.slice().find( (item) => item._id === id);
-      dispatch({type: Actions.ADD_TO_CART, payload: [...state.cart, clickedItem]});
+   toggleModal = () => {
+      this.setState({modalVisible: !this.state.modalVisible});
    }
 
-   handleRemovefromCart(id) {
+   handleAddToOrderClick(id) {
+      const { state, dispatch } = this.context;
+      this.setState({modalVisible: true});
+      const clickedItem = state.visibleItemCards.slice().find( (item) => item._id === id);
+      dispatch({type: Actions.SELECT_ITEM, payload: clickedItem});
+   }
+
+   handleRemoveFromCart(id) {
       const { state, dispatch } = this.context;
       let removeIndex = state.cart.findIndex( (item) => item._id === id);
-      let cartCopy = JSON.parse(JSON.stringify(state.cart));
+      let cartCopy = JSON.parse(JSON.stringify(state.cart)); // why do i stringify then parse this again?
       cartCopy.splice(removeIndex, 1);
       dispatch({type: Actions.REMOVE_FROM_CART, payload: cartCopy});
    }
@@ -80,6 +86,7 @@ class HomeScreen extends Component {
    }
 
    render() {
+      const { state } = this.context;
       var menu;
       if (!this.state.isLoading) {
          menu = (<Menu onCategoryClick={this.onCategoryButtonClick.bind(this)} handleAddToOrderClick={this.handleAddToOrderClick.bind(this)} />)
@@ -91,13 +98,14 @@ class HomeScreen extends Component {
             <div className="main-body">
                <a href="https://ckgrill.com/"><NavComponent /></a>
                <Container>
+                  {this.state.modalVisible ? <ItemModal selectedItem={state.selectedItem} open={this.state.modalVisible} toggle={this.toggleModal}/> : null } 
                   <Row>
-                     <Col sm="12" lg="9">
+                     <Col sm="12" lg="8">
                         {menu}
                      </Col>
 
-                     <Col sm="12" lg="3">
-                        <Cart handleRemoveFromCart={this.handleRemovefromCart} />
+                     <Col sm="12" lg="4">
+                        <Cart handleRemoveFromCart={this.handleRemoveFromCart} />
                      </Col>
                   </Row>
                </Container>

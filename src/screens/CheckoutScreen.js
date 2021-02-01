@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import CheckoutForm from '../containers/CheckoutForm';
 import '../styles/CheckoutScreen.css';
 import { GlobalContext } from '../context/GlobalState';
-
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'shards-react';
 import "shards-ui/dist/css/shards.min.css"
 import "bootstrap/dist/css/bootstrap.min.css";
+import ListItem from '../components/ListItem';
+import * as Actions from '../context/Actions';
 import TAX_RATE from '../api/constants';
-// import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
+import { calcPrice } from '../api/functions';
+import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credentials';
 
 // Stripe
 import { Elements } from '@stripe/react-stripe-js';
@@ -16,15 +18,23 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(`${process.env.REACT_APP_TEST_STRIPE_TEST_PUBLISHABLE_KEY}`, {stripeAccount: `${process.env.REACT_APP_STRIPE_CONNECT_ACCT_ID}`});
 
 const CheckoutScreen = (props) => {
-   const { state } = useContext(GlobalContext);
+   const { state, dispatch } = useContext(GlobalContext);
 
-   const cart = state.cart.map( (itemObj) => {
-      return <ListGroupItem key={itemObj._id}>
-         {itemObj.name}, ${itemObj.price.toFixed(2)}
-      </ListGroupItem>
+   const handleRemoveFromCart = (id) => {
+      let removeIndex = state.cart.findIndex( (item) => item._id === id);
+      let cartCopy = JSON.parse(JSON.stringify(state.cart)); // why do i stringify then parse this again?
+      cartCopy.splice(removeIndex, 1);
+      dispatch({type: Actions.REMOVE_FROM_CART, payload: cartCopy});
+   }
+
+   const cart = state.cart.map( (itemObj, i) => {
+      return <ListItem item={itemObj} i={i} key={i} handleRemoveFromCart={handleRemoveFromCart} />
+      // return <ListGroupItem key={`${itemObj._id}${i}`}>
+      //    {itemObj.name}, ${calcPrice(itemObj).toFixed(2)}
+      // </ListGroupItem>
    });
 
-   const subtotal = state.cart.slice().reduce((acc, obj) => (acc += obj.price), 0).toFixed(2);
+   const subtotal = state.cart.slice().reduce((acc, obj) => (acc += calcPrice(obj)), 0).toFixed(2);
    const tax = (subtotal * TAX_RATE).toFixed(2);
    const total = (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
 
