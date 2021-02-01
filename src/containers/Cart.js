@@ -22,7 +22,6 @@ const Cart = (props) => {
    }
 
    const buttonClick = (e) => {
-      if (state.cart.length > 0) console.log(state.cart);
    }
 
    const subtotal = state.cart.slice().reduce((acc, obj) => (acc += calcPrice(obj)), 0).toFixed(2);
