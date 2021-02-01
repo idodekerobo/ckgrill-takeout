@@ -1,0 +1,44 @@
+.modal-title {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+}
+.modal-close {
+   font-weight: 600;
+   color: red;
+   margin-bottom: 0;
+}
+.modal-close:hover {
+   text-decoration: none;
+   color: black;
+   cursor: pointer;
+}
+.modal-body-container {
+   margin: 5px;
+   max-height: 100%;
+   overflow-y: auto;
+}
+.modal-order-button {
+   background-color: #e72327;
+   color: white;
+   outline: none;
+   border-radius: 5px;
+   border: none;
+   padding: 8px;
+}
+.modal-order-button:hover {
+   background: black;
+}
+.modal-order-button:active {
+   background: #b60709;
+}
+.spec-instructions {
+   margin: 20px;
+   padding: 10px;
+   border-radius: 7px;
+   background-color: #efeff2;  
+}
+.spec-instructions-label {
+   font-weight: 500;
+   margin-bottom: 10px;
+}

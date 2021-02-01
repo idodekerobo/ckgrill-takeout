@@ -6,7 +6,9 @@ T0-DO:
 
 
 // can make this an .env variable
-export const API_URL = process.env.REACT_APP_API_URL;
+// TODO - fix before pushing to production
+export const API_URL = 'http://localhost:5000/api/';
+// export const API_URL = process.env.REACT_APP_API_URL;
 
 // The fetch API calls will be built using async functions, instead of promises
 
@@ -92,13 +94,13 @@ export async function getMenu(menuId) {
 
 // get all categories of a menu
 export async function getCategoriesOfMenu(menuId) {
-   const URL = API_URL + 'menu/' + menuId + '/category/';
+   // const URL = API_URL + 'menu/' + menuId + '/category/';
 
 }
 
 // get a specific category of a specific menu
 export async function getOneCategoryOfMenu(menuId, categoryId) {
-   const URL = API_URL + 'menu/' + menuId + '/category/' + categoryId;
+   // const URL = API_URL + 'menu/' + menuId + '/category/' + categoryId;
 }
 
 // get items of a menu

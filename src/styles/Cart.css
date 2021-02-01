@@ -3,18 +3,15 @@
    flex-direction: column;
    font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
+.remove-button {
+   font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
 .router-link {
    color: #fff;
 }
 .router-link:hover {
    color: lightgrey;
    text-decoration: none;
-}
-.cart-list-group {
-   text-transform: capitalize;
-}
-.remove-button {
-   font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 .order-button {
    background-color: #e72325;
