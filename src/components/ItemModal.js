@@ -56,9 +56,14 @@ const ItemModal = ({selectedItem, open, toggle}) => {
       selectOptions({...selectedOptions, [e.target.name]: e.target.value});
    }
    
-   const renderItemOptions = selectedItem.options.map( (opt, i) => {
-      return <ItemOption key={i} options={opt} checked={true} radioChange={handleRadioChange} checkboxChange={handleCheckboxChange} />
-   });
+   let renderItemOptions;
+   if (selectedItem !== (null || undefined)) {
+      renderItemOptions = selectedItem.options.map( (opt, i) => {
+         return <ItemOption key={i} options={opt} checked={true} radioChange={handleRadioChange} checkboxChange={handleCheckboxChange} />
+      });
+   } else {
+      renderItemOptions = [];
+   }
 
    const renderSpecialInstructionsText = <div className="spec-instructions"><p className="spec-instructions-label">Special Instructions</p><FormInput name="specialInstructions" value={specialInstructions} onChange={e => handleInputChange(e)} placeholder="Give us any special instructions here." /></div>
 
