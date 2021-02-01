@@ -4,7 +4,18 @@ import "shards-ui/dist/css/shards.min.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ItemOption = ({ options, checked, radioChange, checkboxChange }) => {
-   const { name, chooseNum, availChoices } = options;
+   let name, chooseNum, availChoices;
+
+   if ( options === (null || undefined)) {
+      name = ''
+      chooseNum = 1;
+      availChoices = [ {name: '', price: 0}]
+   } else {
+      name = options.name
+      chooseNum = options.chooseNum;
+      availChoices = options.availChoices
+   }
+   
    const radioInput = availChoices.map( (c, i) => <RadioButtons el={c} key={i} name={name} label={c.name} price={c.price} onChange={radioChange}/>)
    const checkboxInput = availChoices.map( (c, i) => <Checkboxes el={c} key={i} name={name} label={c.name} price={c.price} num={chooseNum} onChange={checkboxChange} />)
    
