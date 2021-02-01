@@ -14,8 +14,8 @@ import { STRIPE_TEST_PUBLISHABLE_KEY, STRIPE_CONNECT_ACCT_ID } from '../credenti
 // Stripe
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe(STRIPE_TEST_PUBLISHABLE_KEY, {stripeAccount: STRIPE_CONNECT_ACCT_ID});
-// const stripePromise = loadStripe(`${process.env.REACT_APP_TEST_STRIPE_TEST_PUBLISHABLE_KEY}`, {stripeAccount: `${process.env.REACT_APP_STRIPE_CONNECT_ACCT_ID}`});
+// const stripePromise = loadStripe(STRIPE_TEST_PUBLISHABLE_KEY, {stripeAccount: STRIPE_CONNECT_ACCT_ID});
+const stripePromise = loadStripe(`${process.env.REACT_APP_TEST_STRIPE_TEST_PUBLISHABLE_KEY}`, {stripeAccount: `${process.env.REACT_APP_STRIPE_CONNECT_ACCT_ID}`});
 
 const CheckoutScreen = (props) => {
    const { state, dispatch } = useContext(GlobalContext);
