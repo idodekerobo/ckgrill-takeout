@@ -15,9 +15,9 @@ const ItemOption = ({ options, checked, radioChange, checkboxChange }) => {
       chooseNum = options.chooseNum;
       availChoices = options.availChoices
    }
-   
-   const radioInput = availChoices.map( (c, i) => <RadioButtons el={c} key={i} name={name} label={c.name} price={c.price} onChange={radioChange}/>)
-   const checkboxInput = availChoices.map( (c, i) => <Checkboxes el={c} key={i} name={name} label={c.name} price={c.price} num={chooseNum} onChange={checkboxChange} />)
+
+   const radioInput = (availChoices !== undefined) ? (availChoices.map( (c, i) => <RadioButtons el={c} key={i} name={name} label={c.name} price={c.price} onChange={radioChange}/>)) : (<div></div>)
+   const checkboxInput = (availChoices !== undefined) ? (availChoices.map( (c, i) => <Checkboxes el={c} key={i} name={name} label={c.name} price={c.price} num={chooseNum} onChange={checkboxChange} />)) : (<div></div>)
    
    // useEffect( () => {
       // console.log(option);
