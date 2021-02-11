@@ -57,7 +57,7 @@ const ItemModal = ({selectedItem, open, toggle}) => {
    }
    
    let renderItemOptions;
-   if ( (selectedItem !== null) && (selectedItem !== undefined) && (selectedItem.options[0] !== undefined) ) {
+   if ( (selectedItem !== null) && (selectedItem !== undefined) && (selectedItem.options[0].name !== undefined) ) {
       renderItemOptions = selectedItem.options.map( (opt, i) => {
          return <ItemOption key={i} options={opt} checked={true} radioChange={handleRadioChange} checkboxChange={handleCheckboxChange} />
       });
