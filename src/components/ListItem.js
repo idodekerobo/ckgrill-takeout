@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/ListItem.css';
 import { calcPrice, returnConfig } from '../api/functions';
 
-const ListItem = ({ item, key, handleRemoveFromCart }) => {
+const ListItem = ({ item, index, handleRemoveFromCart }) => {
 
    const itemDetails = (item) => {
       return (
@@ -18,7 +18,7 @@ const ListItem = ({ item, key, handleRemoveFromCart }) => {
    }
 
    return (
-      <ListGroup key={`${item._id}${key}`}>
+      <ListGroup key={`${item._id}${index}`}>
          <ListGroupItem className="cart-list-group">
             <div className="cart-item-header">
                <h5 className="cart-item-name">{item.name}</h5>
