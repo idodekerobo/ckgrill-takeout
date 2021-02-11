@@ -29,9 +29,6 @@ const CheckoutScreen = (props) => {
 
    const cart = state.cart.map( (itemObj, i) => {
       return <ListItem item={itemObj} i={i} key={i} handleRemoveFromCart={handleRemoveFromCart} />
-      // return <ListGroupItem key={`${itemObj._id}${i}`}>
-      //    {itemObj.name}, ${calcPrice(itemObj).toFixed(2)}
-      // </ListGroupItem>
    });
 
    const subtotal = state.cart.slice().reduce((acc, obj) => (acc += calcPrice(obj)), 0).toFixed(2);

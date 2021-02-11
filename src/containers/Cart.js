@@ -13,7 +13,7 @@ const Cart = (props) => {
    const { state } = useContext(GlobalContext);
 
    const currentCart = state.cart.slice().map((item, i) => {
-      return ( <ListItem item={item} key={i} handleRemoveFromCart={props.handleRemoveFromCart} /> )
+      return ( <ListItem item={item} key={i} index={i} handleRemoveFromCart={props.handleRemoveFromCart} /> )
    });
 
    const handleOrderClick = (e) => {
