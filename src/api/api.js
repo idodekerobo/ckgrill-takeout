@@ -1,14 +1,9 @@
-/*
-T0-DO:
- - revise the post item func api call as you change the server side api 
-
-*/
-
+// T0DO: - revise the post item func api call as you change the server side api 
 
 // can make this an .env variable
 // TODO - fix before pushing to production
 // export const API_URL = 'http://localhost:5000/api/';
-// export const API_URL = 'https://f68c251c5c3d.ngrok.io/api/';
+// export const API_URL = 'https://88ec182996a1.ngrok.io/api/';
 export const API_URL = process.env.REACT_APP_API_URL;
 
 // The fetch API calls will be built using async functions, instead of promises
