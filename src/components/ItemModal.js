@@ -57,12 +57,16 @@ const ItemModal = ({selectedItem, open, toggle}) => {
    }
    
    let renderItemOptions;
-   if ( (selectedItem !== null) && (selectedItem !== undefined) && (selectedItem.options[0].name !== undefined) ) {
-      renderItemOptions = selectedItem.options.map( (opt, i) => {
-         return <ItemOption key={i} options={opt} checked={true} radioChange={handleRadioChange} checkboxChange={handleCheckboxChange} />
-      });
-   } else {
+   // checking if selectedItem isn't null/undefined and that options are not null/undefined for selectedItem
+   if ( !(selectedItem !== null) && !(selectedItem !== undefined) && !(selectedItem.options)) {
       renderItemOptions = <div></div>;
+   } else {
+      // then checking if the first element in options arr isn't undefined
+      if ((selectedItem.options[0] !== undefined)) {
+         renderItemOptions = selectedItem.options.map( (opt, i) => {
+            return <ItemOption key={i} options={opt} checked={true} radioChange={handleRadioChange} checkboxChange={handleCheckboxChange} />
+         });
+      }
    }
 
    const renderSpecialInstructionsText = <div className="spec-instructions"><p className="spec-instructions-label">Special Instructions</p><FormInput name="specialInstructions" value={specialInstructions} onChange={e => handleInputChange(e)} placeholder="Give us any special instructions here." /></div>
