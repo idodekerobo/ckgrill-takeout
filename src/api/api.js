@@ -3,7 +3,7 @@
 // can make this an .env variable
 // TODO - fix before pushing to production
 // export const API_URL = 'http://localhost:5000/api/';
-// export const API_URL = 'https://88ec182996a1.ngrok.io/api/';
+// export const API_URL = 'https://db183cf77df5.ngrok.io/api/';
 export const API_URL = process.env.REACT_APP_API_URL;
 
 // The fetch API calls will be built using async functions, instead of promises
@@ -63,13 +63,17 @@ export async function getAllMenus() {
    return fetch(URL, {method: 'GET'})
    .then(resp => {
       errorHandling(resp);
+      // return resp.json(); // if response is okay then convert to json and return
       return resp.json(); // if response is okay then convert to json and return
    })
    .then(jsonData => {
       // console.log(jsonData);
       return jsonData; // take that jsondata and return it 
    })
-   .catch(err => catchBlock(err));
+   .catch(err => {
+      console.log('err getting menu data')
+      catchBlock(err)
+   });
 }
 
 // get one specific menu
