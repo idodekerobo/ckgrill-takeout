@@ -47,7 +47,7 @@ const RadioButtons = ({ el, name, label, price, checked, onChange }) => {
       <div className="input-container">
          <label className="input-label">
             <input className="input radio-input" type="radio" required name={name} value={label} onChange={e => onChange(e, el)} />
-            {label}{(price !== 0) ? `, +$${price.toFixed(2)}` : ""}
+            {label}{(price !== 0 && price !== undefined) ? `, +$${price.toFixed(2)}` : ""}
          </label>
       </div>
    )
