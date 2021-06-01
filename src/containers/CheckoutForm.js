@@ -133,23 +133,10 @@ const CheckoutForm = (props) => {
       }
    }
 
-   // TODO - navigate to success/thank you page if works
    const handleSubmit = async (e) => {
       e.preventDefault();
 
       if (paymentMethod === 'pickup') {
-         // TODO - put the production api url here when it pushes to production
-         await fetch(API_URL + 'order', {
-            method: 'POST',
-            headers: {
-               'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-               items: state.cart,
-               firstName, lastName, email, phone, city, customerState, zip,
-               paid: false
-            })
-         });
          sendOrderToDb(paymentMethod);
          setFeedback('Thank you for your order.');
          setModalBodyText('See you soon!');
