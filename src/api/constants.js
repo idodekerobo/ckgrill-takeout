@@ -1,2 +1,2 @@
-const TAX_RATE = 0.1
+const TAX_RATE = 0.086;
 export default TAX_RATE;
