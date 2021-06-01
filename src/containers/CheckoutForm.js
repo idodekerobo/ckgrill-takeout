@@ -106,6 +106,27 @@ const CheckoutForm = (props) => {
       // console.log(e.target.textContent);
    }
 
+   const sendOrderToDb = async () => {
+      try {
+         const fetchResponse = await fetch(API_URL + 'order', {
+            method: 'POST', 
+            headers: {
+               'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+               items: state.cart,
+               firstName, lastName, email, phone, city, customerState, zip,
+               paid: true
+            })
+         });
+         const data = await fetchResponse.text();
+         console.log(data);
+         // return data;
+      } catch (e) {
+         console.log(`there was an error ${e}`);
+      }
+   }
+
    // TODO - navigate to success/thank you page if works
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -123,6 +144,7 @@ const CheckoutForm = (props) => {
                paid: false
             })
          });
+         sendOrderToDb();
          setFeedback('Thank you for your order.');
          setModalBodyText('See you soon!');
          toggleModal();
@@ -165,25 +187,7 @@ const CheckoutForm = (props) => {
             redirectAfterTimeout();
          } else {
             if (result.paymentIntent.status === 'succeeded') {
-               try {
-                  const fetchResponse = await fetch(API_URL + 'order', {
-                     method: 'POST', 
-                     headers: {
-                        'Content-type': 'application/json'
-                     },
-                     body: JSON.stringify({
-                        items: state.cart,
-                        firstName, lastName, email, phone, city, customerState, zip,
-                        paid: true
-                     })
-                  });
-                  const data = await fetchResponse.text();
-                  console.log(data);
-                  // return data;
-               } catch (e) {
-                  console.log(`there was an error ${e}`);
-               }
-
+               sendOrderToDb();
                setFeedback('Thank you for your order. See you soon!');
                setModalBodyText('We will send a receipt to the email used in the order.');
                toggleModal();
