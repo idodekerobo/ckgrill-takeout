@@ -106,7 +106,13 @@ const CheckoutForm = (props) => {
       // console.log(e.target.textContent);
    }
 
-   const sendOrderToDb = async () => {
+   const sendOrderToDb = async (paymentMethod) => {
+      let isOrderPaid;
+      if (paymentMethod === 'online') {
+         isOrderPaid = true;
+      } else {
+         isOrderPaid = false;
+      }
       try {
          const fetchResponse = await fetch(API_URL + 'order', {
             method: 'POST', 
@@ -116,7 +122,7 @@ const CheckoutForm = (props) => {
             body: JSON.stringify({
                items: state.cart,
                firstName, lastName, email, phone, city, customerState, zip,
-               paid: true
+               paid: isOrderPaid
             })
          });
          const data = await fetchResponse.text();
@@ -144,12 +150,13 @@ const CheckoutForm = (props) => {
                paid: false
             })
          });
-         sendOrderToDb();
+         sendOrderToDb(paymentMethod);
          setFeedback('Thank you for your order.');
          setModalBodyText('See you soon!');
          toggleModal();
          redirectAfterTimeout();
-      } else if (paymentMethod === 'online') {
+      }
+      if (paymentMethod === 'online') {
          if (!stripe || !elements) return;
          // TODO - put the production api url here when it pushes to production
          const response = await fetch(API_URL + 'checkout', {
@@ -187,7 +194,7 @@ const CheckoutForm = (props) => {
             redirectAfterTimeout();
          } else {
             if (result.paymentIntent.status === 'succeeded') {
-               sendOrderToDb();
+               sendOrderToDb(paymentMethod);
                setFeedback('Thank you for your order. See you soon!');
                setModalBodyText('We will send a receipt to the email used in the order.');
                toggleModal();
