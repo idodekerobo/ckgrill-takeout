@@ -58,6 +58,13 @@ const CheckoutScreen = (props) => {
                         </ListGroupItem>
                      </ListGroup>
                   </div>
+
+                  <div className="hours">
+                     <h3>CK's Takeout Hours</h3>
+                     <p>Sunday-Thursday: 11AM - 9:30PM Mountain Time</p>
+                     <p>Friday-Saturday: 11AM - 11:30PM Mountain Time</p>
+                     <h5>Please do not order online outside of these hours.</h5>
+                  </div>
                </Col>
 
                <Col lg="6" md="12" className="columns">
