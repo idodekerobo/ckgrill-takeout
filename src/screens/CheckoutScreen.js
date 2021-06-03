@@ -64,6 +64,9 @@ const CheckoutScreen = (props) => {
                      <p>Sunday-Thursday: 11AM - 9:30PM Mountain Time</p>
                      <p>Friday-Saturday: 11AM - 11:30PM Mountain Time</p>
                      <h5>Please do not order online outside of these hours.</h5>
+
+                     <h3>Questions About Your Order?</h3>
+                     <p>Call us at <a href="tel:+14807065564">480-706-5564</a></p>
                   </div>
                </Col>
 
