@@ -60,9 +60,9 @@ const CheckoutScreen = (props) => {
                   </div>
 
                   <div className="hours">
-                     <h3>CK's Takeout Hours</h3>
-                     <p>Sunday-Thursday: 11AM - 9:30PM Mountain Time</p>
-                     <p>Friday-Saturday: 11AM - 11:30PM Mountain Time</p>
+                     <h3>CK's Online Takeout Hours</h3>
+                     <p>Sunday-Wednesday: 11AM - 9PM Mountain Time</p>
+                     <p>Thursday-Saturday: 11AM - 10:00PM Mountain Time</p>
                      <h5>Please do not order online outside of these hours.</h5>
 
                      <h3>Questions About Your Order?</h3>
